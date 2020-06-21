@@ -28,7 +28,6 @@ button {
   border: 0;
   padding: 10px 15px;
   cursor: pointer;
-  margin-top: 15px;
   font-weight: bold;
   font-size: 14px;
 }
@@ -36,4 +35,67 @@ button {
 div li button {
   margin: 0 15px;
   background: #ca4949;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  max-width: 730px;
+  background: #fff;
+  border-radius: 8px;
+  margin-bottom: 40px;
+}
+
+form fieldset {
+  border: 0;
+}
+
+form .field-group {
+  flex: 1;
+  display: flex;
+}
+
+form .field {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+}
+
+form .field input {
+  flex: 1;
+  background: #f0f0f5;
+  border-radius: 8px;
+  border: 0;
+  padding: 16px 24px;
+  font-size: 16px;
+  color: #6c6c80;
+}
+
+form .field input::placeholder {
+  color: #a0a0b2;
+}
+
+form .field label {
+  font-size: 14px;
+  margin-bottom: 8px;
+}
+
+form .field-group .field + .field {
+  margin-left: 24px;
+}
+
+form .field-group input + input {
+  margin-left: 24px;
+}
+
+form button {
+  align-self: flex-start;
+  transition: background-color 0.2s;
+  cursor: pointer;
+  margin-left: 20px;
+}
+
+form button:hover {
+  background: #2fb86e;
 }
