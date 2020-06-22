@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { FiThumbsUp, FiTrash2 } from "react-icons/fi";
 
 import API from "./services/api";
 
@@ -14,7 +15,7 @@ function App() {
 
   useEffect(() => {
     API.get("repositories").then((response) => {
-      console.log(response);
+      console.log("GET repositories response: ", response);
       setRepositories(response.data);
     });
   }, []);
@@ -26,7 +27,7 @@ function App() {
       url: formData.url,
       techs: formData.techs,
     });
-    console.log(response);
+    console.log("POST repositories response: ", response);
     setRepositories([...repositories, response.data]);
   }
 
@@ -35,6 +36,10 @@ function App() {
     setRepositories((previousState) => {
       return previousState.filter((repository) => repository.id !== id);
     });
+  }
+
+  async function handleLikeRepository(id) {
+    await API.post(`repositories/${id}/like`);
   }
 
   function handleInputChange(event) {
@@ -51,7 +56,7 @@ function App() {
   }
 
   return (
-    <div>
+    <div className="container">
       <form onSubmit={handleAddRepository}>
         <fieldset>
           <div className="field-group">
@@ -87,13 +92,12 @@ function App() {
         <button type="submit">Adicionar</button>
       </form>
 
-      <ul data-testid="repository-list">
+      <ul className="repository-list" data-testid="repository-list">
         {repositories.map((repository) => (
           <li key={repository.id}>
             {repository.title}
-            <button onClick={() => handleRemoveRepository(repository.id)}>
-              Remover
-            </button>
+            <FiThumbsUp onClick={() => handleLikeRepository(repository.id)} />
+            <FiTrash2 onClick={() => handleRemoveRepository(repository.id)} />
           </li>
         ))}
       </ul>
