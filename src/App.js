@@ -15,19 +15,16 @@ function App() {
 
   useEffect(() => {
     API.get("repositories").then((response) => {
-      console.log("GET repositories response: ", response);
       setRepositories(response.data);
     });
   }, []);
 
   async function handleAddRepository() {
-    console.log("form data: ", formData);
     const response = await API.post("repositories", {
       title: formData.title,
       url: formData.url,
       techs: formData.techs,
     });
-    console.log("POST repositories response: ", response);
     setRepositories([...repositories, response.data]);
   }
 
@@ -46,9 +43,7 @@ function App() {
     const { name, value } = event.target;
 
     if (name === "techs") {
-      console.log("techs - value: ", value);
       const techsArray = value.split(",");
-      console.log(techsArray);
       setFormData({ ...formData, [name]: techsArray });
     } else {
       setFormData({ ...formData, [name]: value });
@@ -96,8 +91,14 @@ function App() {
         {repositories.map((repository) => (
           <li key={repository.id}>
             {repository.title}
-            <FiThumbsUp onClick={() => handleLikeRepository(repository.id)} />
-            <FiTrash2 onClick={() => handleRemoveRepository(repository.id)} />
+            <button onClick={() => handleLikeRepository(repository.id)}>
+              Like
+              <FiThumbsUp />
+            </button>
+            <button onClick={() => handleRemoveRepository(repository.id)}>
+              Remover
+              <FiTrash2 />
+            </button>
           </li>
         ))}
       </ul>

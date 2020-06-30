@@ -34,12 +34,20 @@ button {
   font-size: 16px;
   padding: 10px;
 }
-.repository-list li svg {
-  margin-left: 15px;
-  font-size: 18px;
+.repository-list li button {
+  padding: 0;
+  margin-left: 20px;
+  font-size: 14px;
+  font-weight: 300;
+  color: #7159c1;
+  transition: all 0.3s ease-out;
 }
-.repository-list li svg:hover {
-  color: #ca4949;
+.repository-list li button:hover {
+  font-size: 16px;
+  font-weight: 600;
+}
+.repository-list li button svg {
+  margin-left: 5px;
 }
 
 form {
