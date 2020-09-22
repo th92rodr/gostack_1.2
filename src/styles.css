@@ -1,49 +1,55 @@
 * {
   margin: 0;
   padding: 0;
+  outline: none;
   box-sizing: border-box;
 }
 
 body {
   background: #f0f0f5;
   -webkit-font-smoothing: antialiased;
-  font-size: 16px;
+}
+
+body,
+input,
+button {
+  font-family: 'Roboto Slab', serif;
+  font-size: 18px;
+  font-weight: 400;
   color: #000;
 }
 
 button {
-  color: #fff;
   border: 0;
+  border-radius: 8px;
   padding: 10px 15px;
   cursor: pointer;
-  font-weight: bold;
   font-size: 14px;
+  font-weight: 600;
+  color: #fff;
 }
 
 .container {
-  width: 100%;
-  margin: 20px;
+  width: 100vw;
+  height: 100vh;
+  padding: 20px;
 }
 
 .repository-list {
-  padding: 20px;
+  padding: 40px;
 }
 .repository-list li {
+  flex: 1;
   display: flex;
   align-items: center;
-  font-size: 16px;
-  padding: 10px;
+  margin-bottom: 20px;
 }
 .repository-list li button {
-  padding: 0;
-  margin-left: 20px;
-  font-size: 14px;
-  font-weight: 300;
+  font-weight: 400;
   color: #7159c1;
-  transition: all 0.3s ease-out;
+  transition: font-weight 0.2s;
 }
 .repository-list li button:hover {
-  font-size: 16px;
   font-weight: 600;
 }
 .repository-list li button svg {
@@ -52,9 +58,7 @@ button {
 
 form {
   display: flex;
-  flex-direction: column;
-  max-width: 730px;
-  border-radius: 8px;
+  align-items: center;
   padding: 20px;
 }
 form fieldset {
@@ -70,6 +74,9 @@ form .field-group .field {
   flex-direction: column;
   padding: 10px;
 }
+form .field-group .field label {
+  margin-bottom: 10px;
+}
 form .field-group .field input {
   flex: 1;
   background: #fff;
@@ -77,27 +84,14 @@ form .field-group .field input {
   border: 0;
   padding: 16px 24px;
   font-size: 16px;
-  color: #6c6c80;
-}
-form .field-group .field input::placeholder {
-  color: #a0a0b2;
-}
-form .field-group .field label {
-  font-size: 16px;
-  margin-bottom: 10px;
 }
 form .field-group .field-group .field + .field {
   margin-left: 24px;
 }
-form .field-group input + input {
-  margin-left: 24px;
-}
 form button {
-  align-self: flex-start;
-  transition: background-color 0.2s;
-  cursor: pointer;
-  margin: 10px;
+  margin-left: 40px;
   background: #7159c1;
+  transition: background-color 0.2s;
 }
 form button:hover {
   background: #2fb86e;
